@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { X, Bot, CheckCircle, AlertCircle, Clock, Loader } from "lucide-react";
+import { X, Brain, CheckCircle, AlertCircle, Clock, Loader, Syringe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MarkdownContent } from "../MarkdownContent/MarkdownContent";
@@ -44,7 +44,7 @@ const SubAgentPanelComponent = ({ subAgent, onClose }: SubAgentPanelProps) => {
     <div className={styles.panel}>
       <div className={styles.header}>
         <div className={styles.headerInfo}>
-          <Bot className={styles.agentIcon} />
+          <Brain className={styles.agentIcon} />
           <div>
             <h3 className={styles.title}>{subAgent.subAgentName}</h3>
             <div className={styles.status}>

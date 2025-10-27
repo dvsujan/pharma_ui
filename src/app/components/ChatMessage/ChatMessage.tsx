@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo } from "react";
-import { User, Bot } from "lucide-react";
+import { User, Bot, Syringe } from "lucide-react";
 import { SubAgentIndicator } from "../SubAgentIndicator/SubAgentIndicator";
 import { ToolCallBox } from "../ToolCallBox/ToolCallBox";
 import { MarkdownContent } from "../MarkdownContent/MarkdownContent";
@@ -75,7 +75,7 @@ export const ChatMessage = React.memo<ChatMessageProps>(
             (isUser ? (
               <User className={styles.avatarIcon} />
             ) : (
-              <Bot className={styles.avatarIcon} />
+              <Syringe className={styles.avatarIcon} />
             ))}
         </div>
         <div className={styles.content}>

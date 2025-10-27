@@ -1,0 +1,74 @@
+@use "../styles/variables" as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  padding: $spacing-md;
+}
+
+.card {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: $spacing-2xl;
+  box-shadow: $shadow-lg;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-sm;
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: $font-size-base;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  border:none; 
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-primary);
+}
+
+.error {
+  color: var(--color-error);
+  font-size: $font-size-sm;
+  margin-top: $spacing-xs;
+}
+
+.button {
+  margin-top: $spacing-md;
+  width: 100%;
+  background-color: #bf2cda;
+  color:white
+}
+
+.input{ 
+    border:0.2px solid gray; 
+    padding:5%; 
+}

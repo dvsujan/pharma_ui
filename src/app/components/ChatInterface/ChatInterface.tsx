@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Send, Bot, LoaderCircle, SquarePen, History, X } from "lucide-react";
+import { Send, LoaderCircle, SquarePen, History, Syringe } from "lucide-react";
 import { ChatMessage } from "../ChatMessage/ChatMessage";
 import { ThreadHistorySidebar } from "../ThreadHistorySidebar/ThreadHistorySidebar";
 import type { SubAgent, TodoItem, ToolCall } from "../../types/types";
@@ -185,8 +185,8 @@ export const ChatInterface = React.memo<ChatInterfaceProps>(
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.headerLeft}>
-            <Bot className={styles.logo} />
-            <h1 className={styles.title}>Deep Agents</h1>
+            <Syringe className={styles.logo}/>
+            <h1 className={styles.title}>Pharmacovigilance Deep Agent</h1>
           </div>
           <div className={styles.headerRight}>
             <Button
@@ -212,7 +212,7 @@ export const ChatInterface = React.memo<ChatInterfaceProps>(
           <div className={styles.messagesContainer}>
             {!hasMessages && !isLoading && !isLoadingThreadState && (
               <div className={styles.emptyState}>
-                <Bot size={48} className={styles.emptyIcon} />
+                <Syringe size={48} className={styles.emptyIcon} />
                 <h2>Start a conversation or select a thread from history</h2>
               </div>
             )}

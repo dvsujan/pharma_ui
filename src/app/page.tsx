@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, Suspense } from "react";
 import { useQueryState } from "nuqs";
 import { ChatInterface } from "./components/ChatInterface/ChatInterface";
 import { TasksFilesSidebar } from "./components/TasksFilesSidebar/TasksFilesSidebar";
@@ -10,9 +10,11 @@ import { createClient } from "@/lib/client";
 import { useAuthContext } from "@/providers/Auth";
 import type { SubAgent, FileItem, TodoItem } from "./types/types";
 import styles from "./page.module.scss";
+import { useRouter } from "next/navigation";
 
-export default function HomePage() {
-  const { session } = useAuthContext();
+function HomePageContent() {
+  const { session, loading } = useAuthContext();
+  const router = useRouter();
   const [threadId, setThreadId] = useQueryState("threadId");
   const [selectedSubAgent, setSelectedSubAgent] = useState<SubAgent | null>(
     null,
@@ -26,6 +28,12 @@ export default function HomePage() {
   const toggleSidebar = useCallback(() => {
     setSidebarCollapsed((prev) => !prev);
   }, []);
+
+  useEffect(() => {
+    if (!loading && !session) {
+      router.push('/login');
+    }
+  }, [loading, session, router]);
 
   // When the threadId changes, grab the thread state from the graph server
   useEffect(() => {
@@ -67,6 +75,14 @@ export default function HomePage() {
     setFiles({});
   }, [setThreadId]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!session) {
+    return null; // Will redirect from AuthProvider or handle elsewhere
+  }
+
   return (
     <div className={styles.container}>
       <TasksFilesSidebar
@@ -101,5 +117,13 @@ export default function HomePage() {
         />
       )}
     </div>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomePageContent />
+    </Suspense>
   );
 }
