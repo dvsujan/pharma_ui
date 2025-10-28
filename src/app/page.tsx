@@ -28,6 +28,16 @@ function HomePageContent() {
   const toggleSidebar = useCallback(() => {
     setSidebarCollapsed((prev) => !prev);
   }, []);
+    const handleFilesUpdate = useCallback(
+    (newFiles: Record<string, string>) => {
+      setFiles((prevFiles) => ({
+        ...prevFiles,
+        ...newFiles,
+      }));
+    },
+    [],
+  );
+  
 
   useEffect(() => {
     if (!loading && !session) {
@@ -99,7 +109,7 @@ function HomePageContent() {
           setThreadId={setThreadId}
           onSelectSubAgent={setSelectedSubAgent}
           onTodosUpdate={setTodos}
-          onFilesUpdate={setFiles}
+          onFilesUpdate={handleFilesUpdate}
           onNewThread={handleNewThread}
           isLoadingThreadState={isLoadingThreadState}
         />
